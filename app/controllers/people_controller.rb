@@ -16,22 +16,22 @@ class PeopleController < ApplicationController
  
   index_action :csv do
     csv_fields = [
-      ["Institution", lambda { |p| p.institution.try.name.to_s }],
       ["Region", lambda { |p| p.institution.try.region.to_s }],
-      ["BEP", lambda { |p| p.institution.try.bep || "false" }],
-      ["School Code", lambda { |p| p.institution.try.school_code.to_s }],
+	  ["School Code", lambda { |p| p.institution.try.school_code.to_s }],
+	  ["Institution", lambda { |p| p.institution.try.name.to_s }],
       ["QEC", lambda { |p| p.institution.try.qec.to_s }],
-      ["Last Name", lambda { |p| p.last_name }],
+	  ["BEP", lambda { |p| p.institution.try.bep || "false" }],
       ["First Name", lambda { |p| p.first_name }],
-      ["Cell", lambda { |p| p.cell_number }],
+      ["Last Name", lambda { |p| p.last_name }],
+      ["Gender", lambda { |p| p.gender }],
+	  ["Job", lambda {|p| p.job.try.name || "Other" }],
+	  ["Job Details", lambda {|p| p.job_details }],
+      ["Grade Taught", lambda { |p| p.grade_taught }],
+      ["Admin", lambda { |p| p.job.try.admin || "false" }],
+	  ["Cell", lambda { |p| p.cell_number }],
       ["Landline", lambda { |p| p.landline_number }],
       ["Fax", lambda { |p| p.fax_number }],
-      ["Email", lambda { |p| p.email_address }],
-      ["Gender", lambda { |p| p.gender }],
-      ["Grade Taught", lambda { |p| p.grade_taught }],
-      ["Job", lambda {|p| p.job.try.name || "Other" }],
-      ["Admin", lambda { |p| p.job.try.admin || "false" }],
-      ["Job Details", lambda {|p| p.job_details }]
+      ["Email", lambda { |p| p.email_address }]
     ]
     start_day = Date.civil(params[:start_day][:year].to_i, params[:start_day][:month].to_i, params[:start_day][:day].to_i)
     end_day = Date.civil(params[:end_day][:year].to_i, params[:end_day][:month].to_i, params[:end_day][:day].to_i)
