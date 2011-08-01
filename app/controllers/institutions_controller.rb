@@ -10,10 +10,10 @@ class InstitutionsController < ApplicationController
 
   index_action :csv do
     csv_fields = [
-      ["Name", lambda { |s| s.name }],
       ["Region", lambda { |s| s.region.to_s }],
+	  ["School Code", lambda { |s| s.school_code.to_s }],
+	  ["Name", lambda { |s| s.name }],
       ["Type", lambda { |s| s.organization_type.to_s.titleize }],
-      ["School Code", lambda { |s| s.school_code.to_s }],
       ["QEC", lambda { |s| s.qec.to_s }],
       ["BEP", lambda { |s| s.bep ? "true" : "false" }],
       ["Address", lambda { |s| s.address.to_s.strip.gsub("\n", ", ").gsub("\r", "") }],
