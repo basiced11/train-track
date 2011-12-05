@@ -14,9 +14,8 @@ class WorkshopSession < ActiveRecord::Base
   validates_presence_of :workshop
   
   belongs_to :random_identifier, :dependent => :destroy
-  
+
   belongs_to :training_subject
-  validates_presence_of :training_subject
   
   has_many :attendances, :dependent => :destroy
   has_many :appointments, :through => :attendances, :include => :person, :accessible => true, :conditions => 'workshop_id = #{workshop_id}', :order => "people.last_name, people.first_name"
