@@ -21,6 +21,7 @@ class PeopleController < ApplicationController
 	  ["Institution", lambda { |p| p.institution.try.name.to_s }],
       ["QEC", lambda { |p| p.institution.try.qec.to_s }],
 	  ["BEP", lambda { |p| p.institution.try.bep || "false" }],
+	  ["School Type", lambda { |p| p.institution.try.organization_type}],
       ["First Name", lambda { |p| p.first_name }],
       ["Last Name", lambda { |p| p.last_name }],
       ["Gender", lambda { |p| p.gender }],
