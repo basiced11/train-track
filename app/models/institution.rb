@@ -19,7 +19,7 @@ class Institution < ActiveRecord::Base
     "Westmoreland"
   )
   
-  OrganizationType = HoboFields::EnumString.for(:training_organization, :CBSI, :school)
+  OrganizationType = HoboFields::EnumString.for(:training_organization, :JBEP_1_Regular, :JBEP_2_Regular, :JBEP_1_CBSI, :JBEP_both_CBSI_dropped, :JBEP_2_New_CBSI, :JBEP_both_regular, :JBEP_both_Old_CBSI, :JBEP_both_New_CBSI, :school)
   
   validates_numericality_of :school_code, :only_integer => true, :allow_nil => true, :allow_blank => true
   validates_length_of :school_code, :minimum => 5, :allow_nil => true, :allow_blank => true
